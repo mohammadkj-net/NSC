@@ -1,0 +1,55 @@
+﻿@model NSC.Models.CalculatorModel
+
+@{
+    ViewBag.Title = "CalculatorView";
+}
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>
+                <div class="container">
+                    <div class="alert alert-warning">
+                        <h2 class="alert-heading">
+                            <img width="48" height="48" src="~/fonts/calculator.png" />
+                            Welcome to Numeric Sequence Calculator App!
+                        </h2>
+                        <p>Enjoy generating different sequence numbers in two easy steps:</p>
+                        <ul>
+                            <li>Enter positive integer number</li>
+                            <li>Click on <strong>Generate Numbers</strong> button to Generate Sequence Numbers</li>
+                        </ul>
+                    </div>
+                    <div>
+                        @using (Ajax.BeginForm("GenerateNumbers", "Calculator", new { @model = Model }, new AjaxOptions{ UpdateTargetId = "generateNumbersView" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            <table class="table table-responsive">
+                                <tr>
+                                    <td class="col col-md-1">
+                                        Enter Number:
+                                    </td>
+                                    <td class="col col-md-2">
+                                        @Html.TextBoxFor(m => m.UserInput, new { id = "txtNumber", @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.UserInput, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td class="col col-md-4">
+                                        <input type="submit" value="Generate Numbers" class="btn btn-primary" />
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                    <div id="generateNumbersView">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

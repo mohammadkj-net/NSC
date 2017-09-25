@@ -1,0 +1,58 @@
+﻿@using NSC.Models;
+@model NSC.Models.CalculatorModel
+
+<div class="alert alert-success">
+    <table class="table table-bordered table-responsive table-striped">
+        <tr>
+            <td class="col col-md-1"><b>All Numbers:</b></td>
+            <td class="col col-md-4">
+                @foreach (int item in Model.AllNumbers)
+                {
+                    <div style="display:inline">@item</div>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="col col-md-1"><b>Odd Numbers:</b></td>
+            <td class="col col-md-4">
+                @foreach (int item in Model.OddNumbers)
+                {
+                    <div style="display:inline">@item</div>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="col col-md-1"><b>Even Numbers:</b></td>
+            <td class="col col-md-4">
+                @foreach (int item in Model.EvenNumbers)
+                {
+                    <div style="display:inline">
+                        @item
+                    </div>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="col col-md-1"><b>Custom Numbers:</b></td>
+            <td class="col col-md-4">
+                @foreach (string item in Model.CustomNumbers)
+                {
+                    <div style="display:inline">
+                        @item
+                    </div>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="col col-md-1"><b>Fibonacci Numbers:</b></td>
+            <td class="col col-md-4">
+                @foreach (int item in Model.FibonacciNumbers)
+                {
+                    <div style="display:inline">
+                        @item
+                    </div>
+                }
+            </td>
+        </tr>
+    </table>
+</div>
